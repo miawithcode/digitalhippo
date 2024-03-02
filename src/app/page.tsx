@@ -1,5 +1,14 @@
+import Hero from '../components/Hero';
+import BenefitsList from '../components/BenefitsList';
+
 export default function Home() {
   return (
-    <p>Hello World</p>
+    <>
+      <Hero />
+
+      {/* TODO: List products */}
+
+      <BenefitsList />
+    </>
   );
 }
