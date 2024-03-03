@@ -19,7 +19,7 @@ interface NavItemProps {
 const NavItem = ({ category, handleOpen, isOpen, isAnyOpen }: NavItemProps) => {
   return (
     <div className="flex">
-      {/* NAVLINK */}
+      {/* NAVLINKS */}
       <div className="relative flex items-center">
         <Button
           className="gap-1.5"
@@ -35,7 +35,7 @@ const NavItem = ({ category, handleOpen, isOpen, isAnyOpen }: NavItemProps) => {
         </Button>
       </div>
 
-      {/* SUBNAVLINK */}
+      {/* SUBMENU */}
       {isOpen && (
         <div
           className={cn(
