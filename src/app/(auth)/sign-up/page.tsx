@@ -7,8 +7,26 @@ import { cn } from '@/lib/utils';
 import { Label } from '@radix-ui/react-label';
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import {
+  TAuthCredentialValidator,
+  AuthCredentialValidator,
+} from '@/lib/validators/account-credentials-validator';
 
-const page = () => {
+const Page = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<TAuthCredentialValidator>({
+    resolver: zodResolver(AuthCredentialValidator),
+  });
+
+  const onSubmit = ({ email, password }: TAuthCredentialValidator) => {
+    // send data to the server
+  };
+
   return (
     <>
       <div className="container relative flex pt-20 flex-col items-center justify-center lg:px-0">
@@ -35,14 +53,14 @@ const page = () => {
 
           {/* FORM */}
           <div className="grid gap-6">
-            {/* onSubmit={} */}
-            <form>
+            <form onSubmit={handleSubmit(onSubmit)}>
               <div className="grid gap-2">
                 <div className="grid gap-1 py-2">
                   <Label htmlFor="email">Email</Label>
                   <Input
+                    {...register('email')}
                     className={cn({
-                      'focus-visible:ring-red-500': true,
+                      'focus-visible:ring-red-500': errors.email,
                     })}
                     placeholder="you@example.com"
                   />
@@ -50,8 +68,9 @@ const page = () => {
                 <div className="grid gap-1 py-2">
                   <Label htmlFor="password">Password</Label>
                   <Input
+                    {...register('password')}
                     className={cn({
-                      'focus-visible:ring-red-500': true,
+                      'focus-visible:ring-red-500': errors.password,
                     })}
                     placeholder="password"
                   />
@@ -66,4 +85,4 @@ const page = () => {
     </>
   );
 };
-export default page;
+export default Page;
