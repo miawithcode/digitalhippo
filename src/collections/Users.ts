@@ -4,10 +4,10 @@ export const Users: CollectionConfig = {
   slug: 'users',
   auth: {
     verify: {
-      generateEmailHTML: ({token}) => {
-        return `<p>Please verify your email</p>`
-      }
-    }
+      generateEmailHTML: ({ token }) => {
+        return `<a href="${process.env.NEXT_PUBLIC_SERVER_URL}/verify-email?token=${token}">Verify Account</a>`;
+      },
+    },
   },
   access: {
     read: () => true,
@@ -16,7 +16,7 @@ export const Users: CollectionConfig = {
   fields: [
     {
       name: 'role',
-      defaultValue: "user",
+      defaultValue: 'user',
       required: true,
       admin: {
         // condition: ({req}) => req.user.role === "admin"
