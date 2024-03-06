@@ -10,12 +10,14 @@ import {
   DropdownMenuTrigger,
 } from './ui/dropdown-menu';
 import Link from 'next/link';
+import { Blocks, LucideLogOut, UserRound } from 'lucide-react';
 
 const UserAccountNav = ({ user }: { user: User }) => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild className="overflow-visible">
         <Button variant="ghost" size="sm" className="relative">
+          <UserRound className="w-6 h-6 pr-2" />
           My account
         </Button>
       </DropdownMenuTrigger>
@@ -30,9 +32,15 @@ const UserAccountNav = ({ user }: { user: User }) => {
         <DropdownMenuSeparator />
 
         <DropdownMenuItem asChild className="cursor-pointer">
-          <Link href="sell">Seller Dashboard</Link>
+          <Link href="sell">
+            <Blocks className="h-6 w-6 pr-2" />
+            Seller Dashboard
+          </Link>
         </DropdownMenuItem>
-        <DropdownMenuItem className="cursor-pointer">Logout</DropdownMenuItem>
+        <DropdownMenuItem className="cursor-pointer">
+          <LucideLogOut className="h-6 w-6 pr-2" />
+          Logout
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );
