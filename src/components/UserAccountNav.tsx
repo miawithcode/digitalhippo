@@ -11,8 +11,11 @@ import {
 } from './ui/dropdown-menu';
 import Link from 'next/link';
 import { Blocks, LucideLogOut, UserRound } from 'lucide-react';
+import { useAuth } from '@/hooks/useAuth';
 
 const UserAccountNav = ({ user }: { user: User }) => {
+  const { signOut } = useAuth();
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild className="overflow-visible">
@@ -37,7 +40,7 @@ const UserAccountNav = ({ user }: { user: User }) => {
             Seller Dashboard
           </Link>
         </DropdownMenuItem>
-        <DropdownMenuItem className="cursor-pointer">
+        <DropdownMenuItem onClick={signOut} className="cursor-pointer">
           <LucideLogOut className="h-6 w-6 pr-2" />
           Logout
         </DropdownMenuItem>
