@@ -4,7 +4,7 @@ import { Access, CollectionConfig } from 'payload/types';
 const isAdminOrHasAccessToImages =
   (): Access =>
   async ({ req }) => {
-    const user = req.user as User | undefined;
+    const user = req.user as User | null;
 
     if (!user) return false;
     if (user.role === 'admin') return true;
@@ -27,7 +27,7 @@ export const Media: CollectionConfig = {
   },
   access: {
     read: async ({ req }) => {
-      const referer = req.header.referer;
+      const referer = req.headers.referer;
 
       // if user is not login and not on admin page
       // should be able to view all images
