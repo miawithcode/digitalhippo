@@ -1,4 +1,20 @@
-import { CollectionConfig } from 'payload/types';
+import { User } from '../payload-types';
+import { Access, CollectionConfig } from 'payload/types';
+
+const isAdminOrHasAccessToImages =
+  (): Access =>
+  async ({ req }) => {
+    const user = req.user as User | undefined;
+
+    if (!user) return false;
+    if (user.role === 'admin') return true;
+
+    return {
+      user: {
+        equals: req.user.id, // if this user owns this image
+      },
+    };
+  };
 
 export const Media: CollectionConfig = {
   slug: 'media',
@@ -9,8 +25,23 @@ export const Media: CollectionConfig = {
       },
     ],
   },
+  access: {
+    read: async ({ req }) => {
+      const referer = req.header.referer;
+
+      // if user is not login and not on admin page
+      // should be able to view all images
+      if (!req.user || !referer?.includes('sell')) {
+        return true;
+      }
+
+      return await isAdminOrHasAccessToImages()({ req });
+    },
+    delete: ({ req }) => isAdminOrHasAccessToImages()({ req }),
+    update: ({ req }) => isAdminOrHasAccessToImages()({ req }),
+  },
   admin: {
-    hidden: ({user}) => user.role !== "admin"
+    hidden: ({ user }) => user.role !== 'admin',
   },
   upload: {
     staticURL: '/media',
