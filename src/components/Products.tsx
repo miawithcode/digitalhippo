@@ -6,7 +6,7 @@ const Products = () => {
     <MaxWidthWrapper>
       <ProductReel
         query={{ sort: 'desc', limit: 4 }}
-        title="Brand new"
+        title="Brand New"
         href="/products"
       />
     </MaxWidthWrapper>
