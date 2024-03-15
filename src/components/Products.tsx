@@ -4,7 +4,11 @@ import ProductReel from './ProductReel';
 const Products = () => {
   return (
     <MaxWidthWrapper>
-      <ProductReel title='Brand new' href='/products' />
+      <ProductReel
+        query={{ sort: 'desc', limit: 4 }}
+        title="Brand new"
+        href="/products"
+      />
     </MaxWidthWrapper>
   );
 };
