@@ -70,7 +70,7 @@ const ProductReel = (props: ProductReelProps) => {
               <ProductListing
                 product={product}
                 index={index}
-                key={product?.id}
+                key={index}
               />
             ))}
           </div>
