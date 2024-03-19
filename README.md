@@ -1,5 +1,7 @@
 # Digital Hippo - E-Commerce marketplace for digital products
 
+![](/public/screenshot.png)
+
 ## 🧰 Tech Stack
 
 - **Framework**: [Next.js](https://nextjs.org/)
@@ -8,7 +10,7 @@
 - **Content Management & Authentication**: [Payload CMS](https://payloadcms.com/)
 - **Database**: [MongoDB](https://www.mongodb.com/)
 - **Email**: [Resend](https://resend.com/home)
-
+- **Payments Infrastructure**: [Stripe](https://stripe.com/)
 
 ## 🔗 Reference
 
