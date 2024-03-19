@@ -82,7 +82,7 @@ const Page = async ({ params }: PageProps) => {
           </div>
 
           {/* Product Images */}
-          <div className="mt-8 lg:col-start-1 lg:row-start-2 lg:self-center">
+          <div className="mt-8 lg:col-start-1 lg:row-span-2 lg:self-center">
             <div className="aspect-square rounded-lg">
               <ImageSlider urls={validUrls} />
             </div>
