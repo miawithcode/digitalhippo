@@ -10,7 +10,7 @@ import { ReceiptEmailHtml } from './components/emails/ReceiptEmail';
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export const stripeWebhookHandler =
-  async () => (req: express.Request, res: express.Response) => {
+  async (req: express.Request, res: express.Response) => {
     // 1. validate that this request actually comes from stripe
     // 2. update the _isPaid value of this order
     // 3. send receipt email
