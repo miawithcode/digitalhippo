@@ -1,7 +1,12 @@
-const SingleBenefit = ({ name, Icon, description }) => {
+interface SingleBenefitProps {
+  name: string;
+  Icon: any;
+  description: string;
+}
+
+const SingleBenefit = ({ name, Icon, description }: SingleBenefitProps) => {
   return (
     <article className="text-center md:flex md:items-start md:text-left lg:block lg:text-center">
-
       {/* ICON */}
       <div className="md:flex-shrink-0 flex justify-center">
         <div className="h-16 w-16 flex items-center justify-center rounded-full bg-blue-100 text-blue-900">
@@ -16,7 +21,6 @@ const SingleBenefit = ({ name, Icon, description }) => {
           {description}
         </p>
       </div>
-      
     </article>
   );
 };

@@ -17,6 +17,8 @@ import {
   render,
 } from '@react-email/components';
 
+import * as React from "react"
+
 import { format } from 'date-fns';
 
 interface ReceiptEmailProps {
