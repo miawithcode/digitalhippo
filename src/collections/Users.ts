@@ -1,4 +1,4 @@
-import { VerifyEmailHtml } from '@/components/emails/VerifyEmail';
+import { VerifyEmailHtml } from '../components/emails/VerifyEmail';
 import { Access, CollectionConfig } from 'payload/types';
 
 const adminAndUser: Access = ({ req: { user } }) => {
